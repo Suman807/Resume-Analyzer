@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-ResumeAnalyzerApplication<Resume-Analyzer>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.sb.Resume.Analyzer.ResumeAnalyzerApplication",
+            "projectName": "Resume-Analyzer",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}
