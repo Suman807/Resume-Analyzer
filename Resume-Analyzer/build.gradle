@@ -24,18 +24,31 @@ repositories {
 
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-actuator'
-	implementation 'org.springframework.boot:spring-boot-starter-webmvc'
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation 'org.springframework.boot:spring-boot-starter-validation'
 	compileOnly 'org.projectlombok:lombok'
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'
 	annotationProcessor 'org.projectlombok:lombok'
-	
 
+	//Anthorpic
+	implementation 'com.anthropic:anthropic-java:2.35.0'
+
+	//PDFBox dependency for PDF parsing
+	implementation 'org.apache.pdfbox:pdfbox:3.0.5'
+
+	//Resume parsing dependencies (Apache POI for Word documents)
+	implementation 'org.apache.poi:poi-ooxml:5.4.1'
+
+	// //Jackson dependencies
+	// implementation 'com.fasterxml.jackson.datatype:jackson-datatype-jsr310'
+	
 	//Swagger dependencies
     implementation "org.springdoc:springdoc-openapi-starter-webmvc-ui:${springdocOpenApiVersion}"
 
 	//testImplementation
-	testImplementation 'org.springframework.boot:spring-boot-starter-actuator-test'
-	testImplementation 'org.springframework.boot:spring-boot-starter-webmvc-test'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	// testImplementation 'org.springframework.boot:spring-boot-starter-actuator-test'
+	// testImplementation 'org.springframework.boot:spring-boot-starter-web-test'
 	testCompileOnly 'org.projectlombok:lombok'
 	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 	testAnnotationProcessor 'org.projectlombok:lombok'
