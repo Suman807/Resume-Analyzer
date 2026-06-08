@@ -22,19 +22,32 @@ repositories {
 	mavenCentral()
 }
 
+dependencyManagement {
+  imports {
+    mavenBom "org.springframework.ai:spring-ai-bom:${springAiVersion}"
+  }
+}
+
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-actuator'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	implementation 'org.springframework.boot:spring-boot-starter-validation'
+	implementation 'org.springframework.boot:spring-boot-starter-jdbc'
 	compileOnly 'org.projectlombok:lombok'
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'
 	annotationProcessor 'org.projectlombok:lombok'
 
+	//Spring AI for Anthropic integration
+	implementation 'org.springframework.ai:spring-ai-starter-model-anthropic'
+
 	//Anthorpic
-	implementation 'com.anthropic:anthropic-java:2.35.0'
+	// implementation 'com.anthropic:anthropic-java:2.35.0'
 
 	//PDFBox dependency for PDF parsing
 	implementation 'org.apache.pdfbox:pdfbox:3.0.5'
+
+	// PostgreSQL JDBC driver for Supabase/Postgres connection
+	runtimeOnly 'org.postgresql:postgresql'
 
 	//Resume parsing dependencies (Apache POI for Word documents)
 	implementation 'org.apache.poi:poi-ooxml:5.4.1'
@@ -47,8 +60,6 @@ dependencies {
 
 	//testImplementation
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
-	// testImplementation 'org.springframework.boot:spring-boot-starter-actuator-test'
-	// testImplementation 'org.springframework.boot:spring-boot-starter-web-test'
 	testCompileOnly 'org.projectlombok:lombok'
 	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 	testAnnotationProcessor 'org.projectlombok:lombok'

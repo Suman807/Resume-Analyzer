@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.sb.Resume.Analyzer.model.ResumeAnalysisRequest;
+import com.sb.Resume.Analyzer.model.ResumeAnalysisResponse;
 import com.sb.Resume.Analyzer.service.PdfExtractionService;
 import com.sb.Resume.Analyzer.service.ResumeService;
 import lombok.RequiredArgsConstructor;
@@ -44,7 +45,7 @@ public class ResumeController {
         try {
             String extractedText = pdfExtractionService.extractText(request.getResume());
             return ResponseEntity.status(HttpStatus.OK)
-                    .body(resumeService.analyze(extractedText, request.getJobDescription()));
+                    .body(resumeService.analyze(extractedText, request.getJobDescription(), ResumeAnalysisResponse.class));
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
                     .body("Error analyzing resume: " + e.getMessage());
